@@ -52,11 +52,13 @@ export function Testimonials() {
 
       const data = await fetch_api.json();
       if (data.success) {
+        setLoading(false)
         setEmail("");
         setNotify(data.msg);
         setName("");
         setMessage("");
       } else {
+        setLoading(false)
         setNotify(data.msg);
         console.log("s");
       }
@@ -159,11 +161,12 @@ export function Testimonials() {
           ></textarea>
 
           <div className="buttons flex justify-start">
+            
             <button
               onClick={sendMsg}
               className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500 mt-4 rounded-lg"
             >
-              Submit
+             {Loading ? "Saving! Please Wait....":"Submit"}
             </button>
           </div>
         </div>
